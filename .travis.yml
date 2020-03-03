@@ -8,6 +8,7 @@ before_install:
 
 script:
   - docker run -e CI=true phanumax/react-test npm test
+
 after_success:
   - docker build -t phanumax/muti-client ./client
   - docker build -t phanumax/multi-nginx ./nginx
@@ -20,3 +21,15 @@ after_success:
   - docker push phanumax/multi-nginx
   - docker push phanumax/multi-server
   - docker push phanumax/multi-worker
+
+  deploy:
+    provider: elasticbeanstalk
+    region: ap-southeast-1
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-ap-southeast-1-330415815932
+    bucket_path: docker-multi
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
