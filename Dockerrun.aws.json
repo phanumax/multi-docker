@@ -10,26 +10,26 @@
     },
     {
       "name": "server",
-      "images": "phanumax/multi-server",
+      "image": "phanumax/multi-server",
       "hostname": "api",
       "essential": false,
       "memory": 128
     },
     {
       "name": "worker",
-      "images": "phanumax/multi-worker",
+      "image": "phanumax/multi-worker",
       "hostname": "worker",
       "essential": false,
       "memory": 128
     },
     {
       "name": "nginx",
-      "images": "phanumax/multi-nginx",
+      "image": "phanumax/multi-nginx",
       "hostname": "nginx",
       "essential": true,
       "portMapping": [
         {
-          "hostPort": 8000,
+          "hostPort": 80,
           "containerPort": 80
         }
       ],
