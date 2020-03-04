@@ -23,6 +23,7 @@ after_success:
   - docker push phanumax/multi-worker
 
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: ap-southeast-1
   app: multi-docker
