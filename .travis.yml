@@ -10,7 +10,7 @@ script:
   - docker run -e CI=true phanumax/react-test npm test
 
 after_success:
-  - docker build -t phanumax/muti-client ./client
+  - docker build -t phanumax/multi-client ./client
   - docker build -t phanumax/multi-nginx ./nginx
   - docker build -t phanumax/multi-server ./server
   - docker build -t phanumax/multi-worker ./worker
